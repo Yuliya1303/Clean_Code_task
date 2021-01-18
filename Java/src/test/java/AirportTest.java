@@ -49,24 +49,22 @@ public class AirportTest {
 
     @Test
     public void testGetPassengerPlaneWithMaxCapacity() {
-        System.out.println("TEST testGetPassengerPlaneWithMaxCapacity started!");
         Airport airport = new Airport(planes);
         PassengerPlane expectedPlaneWithMaxPassengersCapacity = airport.getPassengerPlaneWithMaxPassengersCapacity();
         Assert.assertTrue(expectedPlaneWithMaxPassengersCapacity.equals(planeWithMaxPassengerCapacity));
     }
 
     @Test
-    public void test3() {
+    public void testSortingPlanes() {
         Airport airport = new Airport(planes);
         airport.sortByMaxLoadCapacity();
         List<? extends Plane> planesSortedByMaxLoadCapacity = airport.getPlanes();
 
-        boolean nextPlaneMaxLoadCapacityIsHigherThanCurrent = true;
+        boolean nextPlaneMaxLoadCapacityIsHigherThanCurrent;
         for (int i = 0; i < planesSortedByMaxLoadCapacity.size() - 1; i++) {
             Plane currentPlane = planesSortedByMaxLoadCapacity.get(i);
             Plane nextPlane = planesSortedByMaxLoadCapacity.get(i + 1);
             if (currentPlane.getMinLoadCapacity() > nextPlane.getMinLoadCapacity()) {
-                nextPlaneMaxLoadCapacityIsHigherThanCurrent = false;
                 break;
             }
         }
@@ -83,10 +81,9 @@ public class AirportTest {
                 flag = true;
             }
             else {
-                Assert.fail("Test failed!");
+                Assert.fail();
             }
         }
-        // if not failed
     }
 
     @Test
